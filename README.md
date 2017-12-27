@@ -1,4 +1,4 @@
-#Fake News Article Detection Using LSTM
+#Artist Identification Using CNNs
 ##Neural Networks and Fuzzy Logic Course Project
 
 ##Team:
