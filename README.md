@@ -2,7 +2,6 @@
 ## Neural Networks and Fuzzy Logic Course Project
 
 ## Team:
-
 1.Vaibhav Sanjay Jade
 2.Samiran Gode
 3.Pratyush Dubey
