@@ -15,5 +15,10 @@ http://cs231n.stanford.edu/reports/2017/pdfs/406.pdf
 (for siamese networks)https://github.com/jadevaibhav/Signature-verification-using-deep-learning
 
 ## Dataset:
-We are working with much smaller dataset than original 'Painters by numbers'. We have taken following 12 painters:
-'Aleksey_Savrasov','Claude_Monet','Da_Vinci', 'Frida_Kahlo','Michelangelo','Pablo_Picasso','Paul_Cezanne', 'Pierre_Renoir', 'Rembrandt','Salvador_Dali','Van_Gogh', 'Wassily_Kandisky'.
+We are working with much smaller dataset than original 'Painters by numbers', provided by Kaggle. We have taken following 12 painters:
+'Aleksey_Savrasov','Claude_Monet','Da_Vinci', 'Frida_Kahlo','Michelangelo','Pablo_Picasso','Paul_Cezanne', 'Pierre_Renoir', 'Rembrandt','Salvador_Dali','Van_Gogh', 'Wassily_Kandisky'. 
+
+## Data Preprocessing
+As mentioned in the above report, we are assuming the artistic features of a painter would present even if we take a slice of whole painting. As we are more concerned with Style(bush strokes, color-schemes etc) than the painting itself. We are taking a 224x224 slice from the images randomly.
+
+
