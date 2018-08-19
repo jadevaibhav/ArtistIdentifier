@@ -18,7 +18,22 @@ http://cs231n.stanford.edu/reports/2017/pdfs/406.pdf
 We are working with much smaller dataset than original 'Painters by numbers', provided by Kaggle. We have taken following 12 painters:
 'Aleksey_Savrasov','Claude_Monet','Da_Vinci', 'Frida_Kahlo','Michelangelo','Pablo_Picasso','Paul_Cezanne', 'Pierre_Renoir', 'Rembrandt','Salvador_Dali','Van_Gogh', 'Wassily_Kandisky'. 
 
-## Data Preprocessing
+## Data Preprocessing:
 As mentioned in the above report, we are assuming the artistic features of a painter would present even if we take a slice of whole painting. As we are more concerned with Style(bush strokes, color-schemes etc) than the painting itself. We are taking a 224x224 slice from the images randomly.
 
+## Methodologies:
+### 1. Baseline CNN
+A basline model with just a few layers which is meant as benchmark for further models.
+
+### 2. Resnet50 with randomly intiallized weights
+ 50 layer deep resnet model architecture with randomly intiallized weights and trained on artist dataset.
+ 
+### 3. Resnet50 with transfer learning
+50 layer deep resnet model architecture with using weights pre-trained on Imagenet dataset and fine-tuned on artist dataset. 
+
+### 4. Resnet50 with siamese and triplet loss
+Resnet architecture trained using siamese network and triplet loss methodology. After training the Resnet50 model, I have added a sofmax classifier and just trained the classifier on the dataset.
+
+## Comparison:
+The comparisons between models is summarized in comparison.ipynb. As per the test set, the Resnet50 model with transfer learning performs significantly better than the other. Suprisingly, the siamese model performs lesser than the plain transfer learning model(wheras it is also intiated with Imagenet weights). I am further investigating the problem with the siamese training model as it is supposed to work even better.
 
