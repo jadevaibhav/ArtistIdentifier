@@ -9,6 +9,8 @@
 
 Owing to space constraints (maximum size of the zip file that could be uploaded was 10 MB), we have deleted all the data files, trained models, and pickled data structures. Only the code, script and result files are present in the zip file uploaded. We are currently preparing dataset which would be uploaded on drive and link would be provided soon.
 
+old code contains the .ipynb codes which we tried on Jupyter notebook on using CPU. As it takes much more time on CPU, er were not able to train resnet models at that time. Thr newly uploaded files are from Colab notebooks, where I was able to run the code on Tesla K80. Basline results are in old code folder, where as the working examples of Colab is in the root folder.
+
 ## Resources:
 http://cs231n.stanford.edu/reports/2017/pdfs/406.pdf
 
@@ -23,7 +25,7 @@ As mentioned in the above report, we are assuming the artistic features of a pai
 
 ## Methodologies:
 ### 1. Baseline CNN
-A basline model with just a few layers which is meant as benchmark for further models.
+A basline model with just a few layers which is meant as benchmark for further models. The code is present in 'old code' folder.
 
 ### 2. Resnet50 with randomly intiallized weights
  50 layer deep resnet model architecture with randomly intiallized weights and trained on artist dataset.
