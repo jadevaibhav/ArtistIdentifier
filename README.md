@@ -35,7 +35,29 @@ A basline model with just a few layers which is meant as benchmark for further m
 
 ### 4. Resnet50 with siamese and triplet loss
 Resnet architecture trained using siamese network and triplet loss methodology. After training the Resnet50 model, I have added a sofmax classifier and just trained the classifier on the dataset.
-
+```
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_9 (InputLayer)            (None, 224, 224, 3)  0                                            
+__________________________________________________________________________________________________
+input_10 (InputLayer)           (None, 224, 224, 3)  0                                            
+__________________________________________________________________________________________________
+input_11 (InputLayer)           (None, 224, 224, 3)  0                                            
+__________________________________________________________________________________________________
+resnet50 (Model)                (None, 1, 1, 2048)   23587712    input_9[0][0]                    
+                                                                 input_10[0][0]                   
+                                                                 input_11[0][0]                   
+__________________________________________________________________________________________________
+concatenate_3 (Concatenate)     (None, 3, 1, 2048)   0           resnet50[1][0]                   
+                                                                 resnet50[2][0]                   
+                                                                 resnet50[3][0]                   
+==================================================================================================
+Total params: 23,587,712
+Trainable params: 23,534,592
+Non-trainable params: 53,120
+________________________________________________________________________________________________
+```
 ## Comparison:
 The comparisons between models is summarized in comparison.ipynb. As per the test set, the Resnet50 model with transfer learning performs significantly better than the other. Suprisingly, the siamese model performs lesser than the plain transfer learning model(wheras it is also intiated with Imagenet weights). I am further investigating the problem with the siamese training model as it is supposed to work even better.
 
