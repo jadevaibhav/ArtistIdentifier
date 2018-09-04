@@ -29,7 +29,9 @@ A basline model with just a few layers which is meant as benchmark for further m
 
 ### 2. Resnet50 with randomly intiallized weights
  50 layer deep resnet model architecture with randomly intiallized weights and trained on artist dataset.
- 
+
+### My additions:
+
 ### 3. Resnet50 with transfer learning
 50 layer deep resnet model architecture with using weights pre-trained on Imagenet dataset and fine-tuned on artist dataset. 
 
@@ -58,6 +60,9 @@ Trainable params: 23,534,592
 Non-trainable params: 53,120
 ________________________________________________________________________________________________
 ```
+### Artist style loss combined with siamese network:
+I have been trying this new technique where I am combining style loss as defined by Neural Style Transfer paper with siamese networks. I am still resolving some implementation issues in Keras. You can find the code in style_loss+siamese.ipynb.
+
 ## Comparison:
 The comparisons between models is summarized in comparison.ipynb. As per the test set, the Resnet50 model with transfer learning performs significantly better than the other. Suprisingly, the siamese model performs lesser than the plain transfer learning model(wheras it is also intiated with Imagenet weights). I am further investigating the problem with the siamese training model as it is supposed to work even better.
 
