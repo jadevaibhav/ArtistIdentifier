@@ -66,7 +66,7 @@ Non-trainable params: 53,120
 ________________________________________________________________________________________________
 ```
 ### 5. Artist style loss combined with siamese network:
-I have been trying this new technique where I am combining style loss as defined by Neural Style Transfer paper with siamese networks. For more details on neural style transfer, please refer to the paper. Also, you can refer to many articles available online. ~~ am still resolving some implementation issues in Keras.~~ I have resolved the previous isues but can't train with batch_size > 1. Still resolving this issue. You can find the code in style_loss+siamese.ipynb.
+I have been trying this new technique where I am combining style loss as defined by Neural Style Transfer paper with siamese networks. For more details on neural style transfer, please refer to the paper. Also, you can refer to many articles available online. ~~am still resolving some implementation issues in Keras.~~ I have resolved the previous isues but can't train with batch_size > 1. Still resolving this issue. You can find the code in style_loss+siamese.ipynb.
 
 ## Comparison:
 The comparisons between models is summarized in comparison.ipynb. As per the test set, the Resnet50 model with transfer learning performs significantly better than the other. Suprisingly, the siamese model performs lesser than the plain transfer learning model(wheras it is also intiated with Imagenet weights). I am further investigating the problem with the siamese training model as it is supposed to work even better.
