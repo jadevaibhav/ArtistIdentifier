@@ -21,6 +21,8 @@ http://cs231n.stanford.edu/reports/2017/pdfs/406.pdf
 
 (Neural Style Transfer paper)https://arxiv.org/pdf/1508.06576.pdf
 
+(Coursera)https://www.coursera.org/lecture/convolutional-neural-networks/what-is-neural-style-transfer-SA5H8
+
 ## Dataset:
 We are working with much smaller dataset than original 'Painters by numbers', provided by Kaggle. We have taken following 12 painters:
 'Aleksey_Savrasov','Claude_Monet','Da_Vinci', 'Frida_Kahlo','Michelangelo','Pablo_Picasso','Paul_Cezanne', 'Pierre_Renoir', 'Rembrandt','Salvador_Dali','Van_Gogh', 'Wassily_Kandisky'. 
@@ -35,7 +37,7 @@ A basline model with just a few layers which is meant as benchmark for further m
 ### 2. Resnet50 with randomly intiallized weights
  50 layer deep resnet model architecture with randomly intiallized weights and trained on artist dataset.
 
-### My additions:
+### My additions to previous work:
 
 ### 3. Resnet50 with transfer learning
 50 layer deep resnet model architecture with using weights pre-trained on Imagenet dataset and fine-tuned on artist dataset. 
@@ -66,7 +68,38 @@ Non-trainable params: 53,120
 ________________________________________________________________________________________________
 ```
 ### 5. Artist style loss combined with siamese network:
-I have been trying this new technique where I am combining style loss as defined by Neural Style Transfer paper with siamese networks. For more details on neural style transfer, please refer to the paper. Also, you can refer to many articles available online. ~~am still resolving some implementation issues in Keras.I have resolved the previous isues but can't train with batch_size > 1. Still resolving this issue.~~ Resolved the issue of batch_size. You can find the code in style_loss+siamese.ipynb.
+I have been trying this new technique where I am combining style loss as defined by Neural Style Transfer paper with siamese networks. I am not using triplet loss here. I am trying to reduce the style loss between 2 input images. For more details on neural style transfer, please refer to the paper. Also, you can refer to many articles available online. ~~am still resolving some implementation issues in Keras.I have resolved the previous isues but can't train with batch_size > 1. Still resolving this issue.~~ Resolved the issue of batch_size. You can find the code in style_loss+siamese.ipynb.
+```
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_2 (InputLayer)            (None, 224, 224, 3)  0                                            
+__________________________________________________________________________________________________
+input_3 (InputLayer)            (None, 224, 224, 3)  0                                            
+__________________________________________________________________________________________________
+model_1 (Model)                 [(None, 112, 112, 64 14714688    input_2[0][0]                    
+                                                                 input_3[0][0]                    
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, 224, 112, 64) 0           model_1[1][0]                    
+                                                                 model_1[2][0]                    
+__________________________________________________________________________________________________
+concatenate_2 (Concatenate)     (None, 112, 56, 128) 0           model_1[1][1]                    
+                                                                 model_1[2][1]                    
+__________________________________________________________________________________________________
+concatenate_3 (Concatenate)     (None, 56, 28, 256)  0           model_1[1][2]                    
+                                                                 model_1[2][2]                    
+__________________________________________________________________________________________________
+concatenate_4 (Concatenate)     (None, 28, 14, 512)  0           model_1[1][3]                    
+                                                                 model_1[2][3]                    
+__________________________________________________________________________________________________
+concatenate_5 (Concatenate)     (None, 14, 7, 512)   0           model_1[1][4]                    
+                                                                 model_1[2][4]                    
+==================================================================================================
+Total params: 14,714,688
+Trainable params: 14,714,688
+Non-trainable params: 0
+__________________________________________________________________________________________________
+```
 
 ## Comparison:
 The comparisons between models is summarized in comparison.ipynb. As per the test set, the Resnet50 model with transfer learning performs significantly better than the other. Suprisingly, the siamese model performs lesser than the plain transfer learning model(wheras it is also intiated with Imagenet weights). I am further investigating the problem with the siamese training model as it is supposed to work even better.
